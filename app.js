@@ -80,6 +80,7 @@ let miniOp = document.querySelectorAll('.choice')//Sneakers Boots Flannels etc
 let productBox = document.querySelector('.productContainer')//red container for orange product boxes where products go
 let pic = document.querySelector('.polaroid')//not worked on yet
 let textBox = document.querySelector('.textContainer')//not worked on yet
+let productContainer = document.querySelector('productContainer')
 
 const changeAll = () => {//functions called by onclick in html
     changeTopPic();//in this case functions can be called prior to instantiating??
@@ -96,27 +97,24 @@ const changeKids = ()=>{
     changeKOptions();
     kproduct();
 }
+let topPic = document.querySelector('.topPic')
 const changeTopPic = () => {//function thats called within changeAll() with onclick in html
     // createImage 
-    let newimage = document.createElement('img')//create an image element in html
-    newimage.setAttribute('src', majorContainer.mens.headImage)//finds the path within the object previously created which contains image links and replaced the big image on screen
-    newimage.setAttribute('class', 'topPic')//give a class name to the element created and it's called 'topPic'
-    // replaceWith current
-    mainImage.replaceWith(newimage)//command replaceWith() replaces an element in html with the new one
+    // let newimage = document.createElement('img')//create an image element in html
+    // newimage.setAttribute('src', majorContainer.mens.headImage)//finds the path within the object previously created which contains image links and replaced the big image on screen
+    // newimage.setAttribute('class', 'topPic')//give a class name to the element created and it's called 'topPic'
+    // // replaceWith current
+    // mainImage.replaceWith(newimage)//command replaceWith() replaces an element in html with the new one
+    topPic.setAttribute('src',majorContainer.mens.headImage)
 }
 const changeWTopPic = () =>{
-    let newimage = document.createElement('img')
-    newimage.setAttribute('src', majorContainer.womens.headImage)
-    newimage.setAttribute('class', 'topPic')
-    mainImage.replaceWith(newimage)
+    topPic.setAttribute('src',majorContainer.womens.headImage)
 }
 const changeKTopPic = () =>{
-    let newimage = document.createElement('img')
-    newimage.setAttribute('src', majorContainer.kids.headImage)
-    newimage.setAttribute('class', 'topPic')
-    mainImage.replaceWith(newimage)
+    topPic.setAttribute('src',majorContainer.kids.headImage)
 }
 const changeOptions = () => {//function thats called within changeAll() with onclick in html
+    option.innerHTML = ''
     majorContainer.mens.optionTags.forEach((tagname) => {
         //forEach loops through the optionTags ("Sneakers","Boots","Flannels",...etc)
         // CREATE div element for each tagName
@@ -128,6 +126,7 @@ const changeOptions = () => {//function thats called within changeAll() with onc
     })
 }
 const changeWOptions=()=>{
+    option.innerHTML = ''
     majorContainer.womens.optionTags.forEach((tagname) => {
         let txt = document.createElement('div')
         txt.innerHTML = tagname
@@ -135,6 +134,7 @@ const changeWOptions=()=>{
     })
 }
 const changeKOptions=()=>{
+    option.innerHTML = ''
     majorContainer.kids.optionTags.forEach((tagname) => {
         let txt = document.createElement('div')
         txt.innerHTML = tagname
@@ -142,6 +142,7 @@ const changeKOptions=()=>{
 })
 }
 const product = () => {
+    productBox.innerHTML = ''
     majorContainer.mens.productImages.forEach((obj) => {//loop through each object in majorContainer.mens.productImages
         //obj now represent the onject containing the name and pic properties
         let shopBox = document.createElement('img')//create an image element in html called shopBox
@@ -153,6 +154,7 @@ const product = () => {
     })
 }
 const wproduct = () => {
+    productBox.innerHTML = ''
     majorContainer.womens.productImages.forEach((obj) => {
         let shopBox = document.createElement('img')
         shopBox.setAttribute('src', obj.pic)
@@ -161,6 +163,7 @@ const wproduct = () => {
     })
 }
 const kproduct =()=>{
+    productBox.innerHTML = ''
     majorContainer.kids.productImages.forEach((obj) => {
         let shopBox = document.createElement('img')
         shopBox.setAttribute('src', obj.pic)
